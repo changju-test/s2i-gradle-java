@@ -1,8 +1,6 @@
 FROM openshift/base-centos7
 
-MAINTAINER Tobias Brunner <tobias.brunner@vshn.ch>
-
-ENV GRADLE_VERSION=7.2
+ENV GRADLE_VERSION=7.3.1
 
 # Docker Image Metadata
 LABEL io.k8s.description="Platform for building (Gradle) and running plain Java applications" \
@@ -12,7 +10,7 @@ LABEL io.k8s.description="Platform for building (Gradle) and running plain Java 
       org.jboss.deployments-dir="/deployments"
 
 # Install Java
-RUN INSTALL_PKGS="java-1.8.0-openjdk java-1.8.0-openjdk-devel" && \
+RUN INSTALL_PKGS="java-11-openjdk java-11-openjdk-devel" && \
     yum install -y $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
